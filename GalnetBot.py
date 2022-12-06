@@ -1,11 +1,11 @@
 #!/usr/bin/python -u
 # GalnetBot.py
-import os
 import json
-#import sys
-from dotenv import load_dotenv
-import urllib.request
+import os
 import time
+import urllib.request
+
+from dotenv import load_dotenv
 
 last_time = 0
 
@@ -22,19 +22,20 @@ def update():
     with open('./known_articles.log') as file:
       if id not in file.read():
         article = data['attributes']
-        date = article['field_galnet_date']
-        title = article['title']
-        body = article['body']['value']
+        if article['langcode'] == 'de':
+          date = article['field_galnet_date']
+          title = article['title']
+          body = article['body']['value']
 
-        print("New Article:")
-        print('ID: ' + id + '\n')
-        print('Galnet News from ' + date)
-        print(title + '\n')
-        print(body)
-        print('\n\n')
+          print("New Article:")
+          print('ID: ' + id + '\n')
+          print('Galnet News from ' + date)
+          print(title + '\n')
+          print(body)
+          print('\n\n')
 
-        with open('./known_articles.log', 'a') as file:
-          file.write(id + '\n')
+          with open('./known_articles.log', 'a') as file:
+            file.write(id + '\n')
 
 
 while True:
