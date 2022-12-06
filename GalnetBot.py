@@ -13,11 +13,8 @@ load_dotenv()
 ENV_GALNET_URL = os.getenv('DISCORD_GALNET_URL')
 
 def update():
-  urllib.request.urlretrieve(ENV_GALNET_URL, './galnet.json')
-
-  with open('./galnet.json', 'r') as json_file:
-    json_load = json.load(json_file)
-  json_file.close
+  with urllib.request.urlopen(ENV_GALNET_URL) as url:
+    json_load = json.load(url)
 
   for data in reversed(json_load['data']):
     id = data['id']
