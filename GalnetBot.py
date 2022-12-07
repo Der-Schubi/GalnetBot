@@ -29,10 +29,27 @@ def update():
 
           print("New Article:")
           print('ID: ' + id + '\n')
+          print('Length: ' + str(len(body)))
           print('Galnet News from ' + date)
           print(title + '\n')
-          print(body)
-          print('\n\n')
+
+          pos = 0
+          while pos >= 0:
+            if len(body) > 2000:
+              pos = body.rfind('\r\n', 0, 2000)
+              if pos == -1:
+                pos = body.rfind(' ', 0, 2000)
+                skip = 1
+              else:
+                skip = 2
+              chunk = body[0:0 + pos]
+              body = body[pos + 1 + skip:]
+            else:
+              pos = -1
+              chunk = body
+
+            print(chunk)
+            print('\n')
 
           with open('./known_articles.log', 'a') as file:
             file.write(id + '\n')
