@@ -1,5 +1,6 @@
 #!/usr/bin/python -u
 # GalnetBot.py
+import asyncio
 import disnake
 import json
 import os
@@ -84,6 +85,7 @@ async def on_ready():
     if time.time() >= last_time + 60:
       await update()
       last_time = time.time()
+    await asyncio.sleep(5)
 
 bot.run(ENV_TOKEN)
 
