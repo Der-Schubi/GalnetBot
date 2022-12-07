@@ -15,6 +15,7 @@ ENV_TOKEN = os.getenv('DISCORD_TOKEN')
 ENV_GUILD = os.getenv('DISCORD_GUILD')
 ENV_CHANNEL = os.getenv('DISCORD_CHANNEL')
 ENV_STATUS = os.getenv('DISCORD_STATUS')
+ENV_PINGROLE = os.getenv('DISCORD_PINGROLE')
 ENV_GALNET_URL = os.getenv('DISCORD_GALNET_URL')
 
 bot = commands.Bot(
@@ -47,7 +48,7 @@ async def update():
           print('Galnet News from ' + date)
           print(title + '\n')
 
-          post = 'GalNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
+          post = '<@' + ENV_PINGREOLE + '> | GalNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
 
           pos = 0
           while pos >= 0:
