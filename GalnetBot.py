@@ -48,7 +48,10 @@ async def update():
           print('Galnet News from ' + date)
           print(title + '\n')
 
-          post = '<@&' + ENV_PINGROLE + '> | GalNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
+          header = '<@&' + ENV_PINGROLE + '> | GalNet News vom ' + date + '\n__**' + title + '**__\n\n'
+          await channel.send(f'{header}')
+
+          post = body + '\n\nMehr unter: https://community.elitedangerous.com/de/galnet/'
 
           pos = 0
           while pos >= 0:
