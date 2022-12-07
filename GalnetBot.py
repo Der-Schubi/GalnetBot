@@ -46,7 +46,7 @@ async def update():
           print('Galnet News from ' + date)
           print(title + '\n')
 
-          post = 'GelNet News vom ' + date + '\n__**' + title + '**__\n\n'+body
+          post = 'GelNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
 
           pos = 0
           while pos >= 0:
@@ -78,14 +78,12 @@ async def on_ready():
     f'{guild.name}(id: {guild.id})\n'
   )
   await bot.change_presence(activity=disnake.Game(name=ENV_STATUS))
-  update()
-  last_time = 0
+  await update()
+  last_time = time.time()
   while True:
     if time.time() >= last_time + 60:
-      print('Updating...')
       await update()
       last_time = time.time()
-      print('done')
 
 bot.run(ENV_TOKEN)
 
