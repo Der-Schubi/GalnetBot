@@ -46,7 +46,7 @@ async def update():
           print('Galnet News from ' + date)
           print(title + '\n')
 
-          post = 'GelNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
+          post = 'GalNet News vom ' + date + '\n__**' + title + '**__\n\n' + body
 
           pos = 0
           while pos >= 0:
