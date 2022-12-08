@@ -59,9 +59,9 @@ async def update():
               pos = post.rfind('\r\n', 0, 2000)
               if pos == -1:
                 pos = post.rfind(' ', 0, 2000)
-                skip = 1
+                skip = 0
               else:
-                skip = 2
+                skip = 1
               chunk = post[0:0 + pos]
               post = post[pos + 1 + skip:]
             else:
