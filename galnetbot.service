@@ -1,0 +1,18 @@
+# Placed in /etc/systemd/system
+[Unit]
+Description=Discord Bot to receive and post Galnet News to a channel
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+Restart=always
+RestartSec=3
+WorkingDirectory=/etc/galnetbot/
+ExecStart=/etc/galnetbot/galnetbot.py
+StandardOutput=journal+console
+StandardError=journal+console
+SyslogIdentifier=galnetbot
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 #!/usr/bin/python -u
-# GalnetBot.py
+# galnetbot.py
 import asyncio
 import disnake
 import json
